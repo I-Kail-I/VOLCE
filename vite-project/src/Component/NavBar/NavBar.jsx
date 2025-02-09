@@ -1,0 +1,80 @@
+import {
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  Button,
+  Dropdown,
+  Container,
+} from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Logo from "../../assets/Adiddas.png";
+
+const CustomNavbar = () => {
+  return (
+    <Navbar
+      style={{ backgroundColor: "transparent" }}
+      expand="lg"
+      className="shadow-sm fixed-top"
+    >
+      <Container className="d-flex" style={{ gap: "20px" }}>
+        <Navbar.Brand href="#home" className="d-flex align-items-center">
+          <img
+            src={Logo}
+            width="100"
+            height="auto"
+            className="d-inline-block align-top rounded-circle me-2"
+            alt="Logo"
+          />
+          <span className="fw-normal">Jerk Mate</span>
+        </Navbar.Brand>
+
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto" style={{ gap: "30px", marginLeft: "20px" }}>
+            <Nav.Link href="#home" className="active">
+              Home
+            </Nav.Link>
+            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
+
+            <Dropdown as={Nav.Item}>
+              <Dropdown.Toggle as={Nav.Link} className="text-dark">
+                More
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#about">About Us</Dropdown.Item>
+                <Dropdown.Item href="#contact">Contact</Dropdown.Item>
+                <Dropdown.Item href="#blog">Blog</Dropdown.Item>
+                <Dropdown.Item href="#services">Services</Dropdown.Item>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#consulting">Consulting</Dropdown.Item>
+                  <Dropdown.Item href="#support">Support</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Nav>
+
+          <Form className="d-flex mx-3">
+            <FormControl
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              className="me-2"
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>
+
+          <Nav>
+            <Button variant="outline-primary" className="me-2">
+              Login
+            </Button>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
+
+export default CustomNavbar;
