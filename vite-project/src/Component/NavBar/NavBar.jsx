@@ -63,11 +63,11 @@ const CustomNavbar = () => {
               aria-label="Search"
               className="me-2"
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="outline-light">Search</Button>
           </Form>
 
           <Nav>
-            <Button variant="outline-primary" className="me-2">
+            <Button className="btn-success">
               Login
             </Button>
           </Nav>
