@@ -1,8 +1,9 @@
 import { useState } from "react";
 import NavBar from "../Component/NavBar/NavBar";
 
-export default function SignIn() {
-  const users = [
+// Registered User In Data Base
+const server_data = () => {
+  return [
     {
       user_id: 1,
       username: "Mikail",
@@ -40,7 +41,9 @@ export default function SignIn() {
       role: "admin",
     },
   ];
+};
 
+export default function SignIn() {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [accountname, setAccountname] = useState("");
   const [password, setPassword] = useState("");
@@ -48,6 +51,7 @@ export default function SignIn() {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    const users = server_data();
     const user = users.find(
       (u) => u.username === accountname && u.password === password
     );
