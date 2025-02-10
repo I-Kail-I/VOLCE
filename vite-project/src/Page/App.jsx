@@ -3,7 +3,7 @@ import NavBar from "../Component/NavBar/NavBar";
 
 // Registered User In Data Base
 const server_data = () => {
-  return [
+  const user = [
     {
       user_id: 1,
       username: "Mikail",
@@ -41,12 +41,13 @@ const server_data = () => {
       role: "admin",
     },
   ];
+  return user;
 };
 
 export default function SignIn() {
   const [loggedInUser, setLoggedInUser] = useState(null);
-  const [accountname, setAccountname] = useState("");
-  const [password, setPassword] = useState("");
+  const [accountname, setAccountname] = useState(null);
+  const [password, setPassword] = useState(null);
   const [error, setError] = useState("");
 
   const handleLogin = (e) => {
