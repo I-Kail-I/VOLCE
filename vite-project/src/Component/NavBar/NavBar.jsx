@@ -10,7 +10,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import Logo from "../../assets/Adiddas.png";
 
-const CustomNavbar = () => {
+const CustomNavbar = ({ onLogout }) => {
   return (
     <Navbar
       style={{ backgroundColor: "transparent" }}
@@ -67,8 +67,8 @@ const CustomNavbar = () => {
           </Form>
 
           <Nav>
-            <Button className="btn-success">
-              Login
+            <Button className="btn-success" onClick={onLogout}>
+              Log Out
             </Button>
           </Nav>
         </Navbar.Collapse>

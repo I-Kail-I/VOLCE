@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "./SignUp.Component.css";
 
 const server_data = () => {
   const user = [
@@ -43,10 +45,9 @@ const server_data = () => {
   return user;
 };
 
-export default function SignIn() {
-  const setLoggedInUser = useState(null);
+export default function SignIn({ onLogin }) {
   const [accountname, setAccountname] = useState("");
-  const [password, setPasswordvsc] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleLogin = (e) => {
@@ -57,7 +58,7 @@ export default function SignIn() {
     );
 
     if (user) {
-      setLoggedInUser(user);
+      onLogin(user);
       setError("");
     } else {
       setError("Invalid username or password");
@@ -79,7 +80,7 @@ export default function SignIn() {
             <div className="mb-4">
               <h2>Welcome Back!</h2>
               <p>
-                Don&apos;t Have An Account? <a href="#">Create Now</a>
+                Don&apos;t Have An Account? <Link to="/signup">Create Now</Link>
               </p>
             </div>
             <Form onSubmit={handleLogin}>
@@ -88,6 +89,7 @@ export default function SignIn() {
                   type="text"
                   placeholder="Enter Your Username"
                   value={accountname}
+                  autoComplete="off"
                   onChange={(e) => setAccountname(e.target.value)}
                   required
                 />
@@ -97,6 +99,7 @@ export default function SignIn() {
                 <Form.Control
                   type="password"
                   placeholder="Enter Your Password"
+                  autoComplete="off"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
