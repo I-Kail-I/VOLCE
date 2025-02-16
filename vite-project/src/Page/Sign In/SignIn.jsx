@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 
 const server_data = () => {
-  return [
+  const user = [
     {
       user_id: 1,
       username: "Mikail",
@@ -39,12 +40,13 @@ const server_data = () => {
       role: "admin",
     },
   ];
+  return user;
 };
 
-export default function SignIn({ onLogin }) {
-  const [loggedInUser, setLoggedInUser] = useState(null);
+export default function SignIn() {
+  const setLoggedInUser = useState(null);
   const [accountname, setAccountname] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPasswordvsc] = useState("");
   const [error, setError] = useState("");
 
   const handleLogin = (e) => {
@@ -57,107 +59,110 @@ export default function SignIn({ onLogin }) {
     if (user) {
       setLoggedInUser(user);
       setError("");
-      onLogin(user); // Call the onLogin prop with the user object
     } else {
       setError("Invalid username or password");
     }
   };
 
   return (
-    <div className="vh-100 d-flex align-items-center justify-content-center bg-dark">
-      <div
-        className="container rounded-1 shadow p-5 text-light"
-        style={{
-          width: "800px",
-          maxWidth: "90%",
-          backgroundColor: "#141d2b",
-        }}
+    <Container
+      fluid
+      className="vh-100 d-flex align-items-center justify-content-center bg-dark"
+    >
+      <Card
+        className="rounded-1 shadow p-5 text-light"
+        style={{ width: "800px", maxWidth: "90%", backgroundColor: "#141d2b" }}
       >
-        <div className="row flex-nowrap">
-          <div className="col-md-6">
-            <div className="title">
-              <h2 className="text-light">Welcome Back!</h2>
-              <p className="text-light">
-                Don&apos;t Have An Account? <a href=""> Create Now</a>{" "}
+        <Row className="flex-nowrap">
+          {/* Left Side: Login Form */}
+          <Col md={6}>
+            <div className="mb-4">
+              <h2>Welcome Back!</h2>
+              <p>
+                Don&apos;t Have An Account? <a href="#">Create Now</a>
               </p>
             </div>
-            <form onSubmit={handleLogin}>
-              <div className="inputUser d-flex flex-column">
-                <input
-                  className="form-control p-2 mb-3"
+            <Form onSubmit={handleLogin}>
+              <Form.Group controlId="formUsername" className="mb-3">
+                <Form.Control
                   type="text"
                   placeholder="Enter Your Username"
                   value={accountname}
                   onChange={(e) => setAccountname(e.target.value)}
                   required
                 />
+              </Form.Group>
 
-                <input
-                  className="form-control p-2 mb-1"
+              <Form.Group controlId="formPassword" className="mb-3">
+                <Form.Control
                   type="password"
                   placeholder="Enter Your Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
+              </Form.Group>
 
-                {error && <div className="text-danger mb-3">{error}</div>}
+              {error && (
+                <Form.Text className="text-danger mb-3">{error}</Form.Text>
+              )}
 
-                <div className="form-check mb-4">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="remember_me"
-                  />
-                  <label className="form-check-label text-light">
-                    {" "}
-                    I agree to the <a href="#">Terms & Condition</a>{" "}
-                  </label>
-                </div>
+              <Form.Group controlId="formBasicCheckbox" className="mb-4">
+                <Form.Check
+                  type="checkbox"
+                  label={
+                    <>
+                      I agree to the <a href="#">Terms & Conditions</a>
+                    </>
+                  }
+                />
+              </Form.Group>
 
-                <button type="submit" className="btn btn-info w-100">
-                  Submit
-                </button>
-              </div>
-            </form>
-            <div className="loginOption">
-              <div className="row">
-                <div className="col">
+              <Button type="submit" variant="info" className="w-100">
+                Submit
+              </Button>
+            </Form>
+
+            {/* Social Login Options */}
+            <div className="mt-4">
+              <Row className="align-items-center">
+                <Col>
                   <hr />
-                </div>
-                <div className="col">
-                  <p>LOGIN WITH</p>
-                </div>
-                <div className="col">
+                </Col>
+                <Col xs="auto">
+                  <p className="mb-0">LOGIN WITH</p>
+                </Col>
+                <Col>
                   <hr />
-                </div>
-              </div>
-
-              <div
-                className="col justify-content-between d-flex"
-                style={{ marginLeft: "" }}
-              >
-                <button className="btn btn-outline-light">GOOGLE</button>
-                <button className="btn btn-outline-light">FACEBOOK</button>
-                <button className="btn btn-outline-light">TWITTER</button>
-              </div>
+                </Col>
+              </Row>
+              <Row className="justify-content-around">
+                <Col xs="auto">
+                  <Button variant="outline-light">GOOGLE</Button>
+                </Col>
+                <Col xs="auto">
+                  <Button variant="outline-light">FACEBOOK</Button>
+                </Col>
+                <Col xs="auto">
+                  <Button variant="outline-light">TWITTER</Button>
+                </Col>
+              </Row>
             </div>
-          </div>
+          </Col>
 
-          {/**Right Side */}
-          <div className="col-md-6 d-none d-md-flex">
+          {/* Right Side: Informational Panel */}
+          <Col md={6} className="d-none d-md-flex">
             <div
-              className="w-100 h-100 p-4 text-center text-light position-relative d-flex flex-column justify-content-center rounded"
+              className="w-100 h-100 p-4 text-center text-light d-flex flex-column justify-content-center rounded"
               style={{ background: "#252532" }}
             >
               <h2>
                 Make Your Journey To The Best <br /> And Make It Memorable
               </h2>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </Col>
+        </Row>
+      </Card>
+    </Container>
   );
 }
