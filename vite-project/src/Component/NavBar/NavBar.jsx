@@ -8,9 +8,12 @@ import {
   Container,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Logo from "../../assets/Adiddas.png";
+import Logo from "../../assets/Image/Adiddas.png";
+import { useNavigate } from "react-router-dom";
 
 const CustomNavbar = ({ onLogout }) => {
+  const navigate = useNavigate();
+
   return (
     <Navbar
       style={{ backgroundColor: "orange" }}
@@ -18,7 +21,11 @@ const CustomNavbar = ({ onLogout }) => {
       className="shadow-sm"
     >
       <Container className="d-flex" style={{ gap: "20px" }}>
-        <Navbar.Brand href="#home" className="d-flex align-items-center">
+        <Navbar.Brand
+          onClick={() => navigate("/")}
+          className="d-flex align-items-center"
+          style={{ cursor: "pointer" }}
+        >
           <img
             src={Logo}
             width="100"
@@ -26,14 +33,13 @@ const CustomNavbar = ({ onLogout }) => {
             className="d-inline-block align-top rounded-circle me-2"
             alt="Logo"
           />
-          <span className="fw-normal">Jerk Mate</span>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto" style={{ gap: "30px", marginLeft: "20px" }}>
-            <Nav.Link href="#home" className="active">
+            <Nav.Link onClick={() => navigate("/")} className="active">
               Home
             </Nav.Link>
             <Nav.Link href="#features">Features</Nav.Link>
@@ -45,11 +51,16 @@ const CustomNavbar = ({ onLogout }) => {
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item href="#about">About Us</Dropdown.Item>
+
                 <Dropdown.Item href="#contact">Contact</Dropdown.Item>
+
                 <Dropdown.Item href="#blog">Blog</Dropdown.Item>
+
                 <Dropdown.Item href="#services">Services</Dropdown.Item>
+
                 <Dropdown.Menu>
                   <Dropdown.Item href="#consulting">Consulting</Dropdown.Item>
+
                   <Dropdown.Item href="#support">Support</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown.Menu>
