@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Row,
@@ -13,6 +15,52 @@ import { Link } from "react-router-dom";
 import "./SignUp.Component.css";
 
 export default function App() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState({
+    firstName: false,
+    lastName: false,
+    username: false,
+    password: false,
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: !value,
+    }));
+  };
+
+  const isFormValid = () => {
+    const newErrors = {
+      firstName: !formData.firstName,
+      lastName: !formData.lastName,
+      username: !formData.username,
+      password: !formData.password,
+    };
+    setErrors(newErrors);
+    return !Object.values(newErrors).some((error) => error);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isFormValid()) {
+      navigate("/signIn");
+    }
+  };
+
   return (
     <>
       <div className="vh-100 bg-dark d-flex justify-content-center align-items-center">
@@ -33,11 +81,11 @@ export default function App() {
                   style={{ background: "#252532" }}
                 >
                   <h2>
-                    Ready for your JerkMate competation?!
+                    Ready for your JerkMate Competition?!
                     <br />
                     say no more
                     <br />
-                    and jump to the grandmastorbaitor
+                    and jump to the GrandsMasterbaitor
                   </h2>
                 </Card>
               </Row>
@@ -53,32 +101,77 @@ export default function App() {
                   </p>
                 </Row>
 
-                <Form>
+                <Form onSubmit={handleSubmit}>
                   <Row className="d-flex align-items-center justify-content-center">
                     <Row>
                       <Col>
                         <FormGroup>
                           <FormLabel>First Name</FormLabel>
-                          <FormControl type="text" required />
+                          <FormControl
+                            type="text"
+                            placeholder="First Name"
+                            name="firstName"
+                            value={formData.firstName}
+                            onChange={handleChange}
+
+                          />
+                          {errors.firstName && (
+                            <div className="text-danger">
+                              Enter Your First Name
+                            </div>
+                          )}
                         </FormGroup>
                       </Col>
 
                       <Col>
                         <FormGroup>
                           <FormLabel>Last Name</FormLabel>
-                          <FormControl type="text" required />
+                          <FormControl
+                            type="text"
+                            placeholder="Last Name"
+                            name="lastName"
+                            value={formData.lastName}
+                            onChange={handleChange}
+
+                          />
+                          {errors.lastName && (
+                            <div className="text-danger">
+                              Enter Your Last Name 
+                            </div>
+                          )}
                         </FormGroup>
                       </Col>
                     </Row>
 
                     <FormGroup className="mt-2" style={{ width: "340px" }}>
                       <FormLabel>Username</FormLabel>
-                      <FormControl type="text" required />
+                      <FormControl
+                        type="text"
+                        placeholder="Enter Your Username"
+                        name="username"
+                        value={formData.username}
+                        onChange={handleChange}
+
+                      />
+                      {errors.username && (
+                        <div className="text-danger">Enter Your Username </div>
+                      )}
                     </FormGroup>
 
                     <FormGroup className="mt-2" style={{ width: "340px" }}>
                       <FormLabel>Password</FormLabel>
-                      <FormControl type="password" minLength={5} required />
+                      <FormControl
+                        type="password"
+                        placeholder="Enter Your Password"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        minLength={5}
+
+                      />
+                      {errors.password && (
+                        <div className="text-danger">Enter Your Password </div>
+                      )}
                     </FormGroup>
 
                     <Row className="justify-content-center">

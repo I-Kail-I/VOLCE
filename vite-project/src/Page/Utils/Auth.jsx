@@ -16,6 +16,8 @@ export default function Auth() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <Routes>
+
+        {/* Route for Sign In to Home */}
         <Route
           path="/"
           element={
@@ -26,7 +28,13 @@ export default function Auth() {
             )
           }
         />
+
+        {/* Route for Sign In and Sign Up link */}
+        <Route path="/signIn" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+
+        {/* Route for the Button of the Sign Up to the Sign In */}
+        <Route path="/signIn" element={<SignIn  />} />
       </Routes>
     </div>
   );
