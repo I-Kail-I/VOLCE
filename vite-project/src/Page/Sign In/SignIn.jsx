@@ -52,6 +52,14 @@ export default function SignIn({ onLogin }) {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    if (!accountname) {
+      setError("The Username needs to be filled");
+      return;
+    }
+    if (!password) {
+      setError("The Password needs to be filled");
+      return;
+    }
     const users = server_data();
     const user = users.find(
       (u) => u.username === accountname && u.password === password
