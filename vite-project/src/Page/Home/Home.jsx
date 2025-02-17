@@ -3,18 +3,20 @@ import { Container, Row, Col, Button, Card } from "react-bootstrap";
 
 export default function Home({ onLogout }) {
   return (
-    <div className="landing-page flex-grow-1">
-      <CustomNavbar onLogout={onLogout} />
+    <>
+      <div className="landing-page flex-grow-1">
+        <CustomNavbar onLogout={onLogout} />
 
-      {/* Welcome Section */}
-      <HeroSection />
+        {/* Welcome Section */}
+        <HeroSection />
 
-      {/* Features Section */}
-      <FeaturesSection />
+        {/* Features Section */}
+        <FeaturesSection />
 
-      {/* Footer */}
-      <Footer />
-    </div>
+        {/* Footer */}
+        <Footer />
+      </div>
+    </>
   );
 }
 

@@ -7,18 +7,35 @@ import {
   Dropdown,
   Container,
 } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Logo from "../../assets/Image/Adiddas.png";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import "./NavBar.css"; // Import the CSS file for animation
 
 const CustomNavbar = ({ onLogout }) => {
   const navigate = useNavigate();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <Navbar
       style={{ backgroundColor: "orange" }}
       expand="lg"
-      className="shadow-sm"
+      className={`shadow-sm ${scrolled ? "navbar-scrolled" : ""}`}
     >
       <Container className="d-flex" style={{ gap: "20px" }}>
         <Navbar.Brand

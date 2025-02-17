@@ -15,30 +15,32 @@ export default function Auth() {
   };
 
   return (
-    <div className="d-flex flex-column min-vh-100">
-      <Routes>
-        {/* Route for Sign In to Home */}
-        <Route
-          path="/"
-          element={
-            loggedInUser ? (
-              <Home onLogout={handleLogout} />
-            ) : (
-              <SignIn onLogin={(user) => setLoggedInUser(user)} />
-            )
-          }
-        />
+    <>
+      <div className="d-flex flex-column min-vh-100">
+        <Routes>
+          {/* Route for Sign In to Home */}
+          <Route
+            path="/"
+            element={
+              loggedInUser ? (
+                <Home onLogout={handleLogout} />
+              ) : (
+                <SignIn onLogin={(user) => setLoggedInUser(user)} />
+              )
+            }
+          />
 
-        {/* Route for Sign In and Sign Up link */}
-        <Route path="/signIn" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
+          {/* Route for Sign In and Sign Up link */}
+          <Route path="/signIn" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
 
-        {/* Route for the Button of the Sign Up to the Sign In */}
-        <Route path="/signIn" element={<SignIn />} />
+          {/* Route for the Button of the Sign Up to the Sign In */}
+          <Route path="/signIn" element={<SignIn />} />
 
-        {/* Routing for the Sign In terms and condition to the Policy page */}
-        <Route path="Policy" element={<Policy />} />
-      </Routes>
-    </div>
+          {/* Routing for the Sign In terms and condition to the Policy page */}
+          <Route path="Policy" element={<Policy />} />
+        </Routes>
+      </div>
+    </>
   );
 }

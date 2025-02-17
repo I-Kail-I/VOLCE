@@ -125,7 +125,7 @@ export default function App() {
                           <FormLabel>Last Name</FormLabel>
                           <FormControl
                             type="text"
-                            placeholder="Last Name" 
+                            placeholder="Last Name"
                             name="lastName"
                             value={formData.lastName}
                             onChange={handleChange}
