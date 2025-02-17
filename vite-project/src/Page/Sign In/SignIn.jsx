@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  Card,
+  FormCheck,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./SignUp.Component.css";
 
@@ -92,14 +100,13 @@ export default function SignIn({ onLogin }) {
               </p>
             </div>
             <Form onSubmit={handleLogin}>
-              <Form.Group controlId="formUsername" className="mb-3">
+              <Form.Group controlId="formUsername" className="mb-3  ">
                 <Form.Control
                   type="text"
                   placeholder="Enter Your Username"
                   value={accountname}
                   autoComplete="off"
                   onChange={(e) => setAccountname(e.target.value)}
-                  required
                 />
               </Form.Group>
 
@@ -110,7 +117,6 @@ export default function SignIn({ onLogin }) {
                   autoComplete="off"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  required
                 />
               </Form.Group>
 
@@ -119,14 +125,7 @@ export default function SignIn({ onLogin }) {
               )}
 
               <Form.Group controlId="formBasicCheckbox" className="mb-4">
-                <Form.Check
-                  type="checkbox"
-                  label={
-                    <>
-                      I agree to the <a href="#">Terms & Conditions</a>
-                    </>
-                  }
-                />
+                <FormCheck label={<>I agree to the <Link to="/Policy">terms and condition</Link></>} />
               </Form.Group>
 
               <Button type="submit" variant="info" className="w-100">
@@ -147,6 +146,7 @@ export default function SignIn({ onLogin }) {
                   <hr />
                 </Col>
               </Row>
+
               <Row className="justify-content-around">
                 <Col xs="auto">
                   <Button variant="outline-light">GOOGLE</Button>

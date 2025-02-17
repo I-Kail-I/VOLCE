@@ -80,13 +80,11 @@ export default function App() {
                   className="w-100 h-100 p-4 text-center text-light d-flex flex-column justify-content-center rounded rounded-2"
                   style={{ background: "#252532" }}
                 >
-                  <h2>
-                    Ready for your JerkMate Competition?!
-                    <br />
-                    say no more
-                    <br />
-                    and jump to the GrandsMasterbaitor
-                  </h2>
+                  <h2>Welcome to Our Community</h2>
+                  <p>
+                    Join us today and be a part of an exclusive network of
+                    professionals. Sign up now to start your journey with us.
+                  </p>
                 </Card>
               </Row>
             </Col>
@@ -113,7 +111,6 @@ export default function App() {
                             name="firstName"
                             value={formData.firstName}
                             onChange={handleChange}
-
                           />
                           {errors.firstName && (
                             <div className="text-danger">
@@ -128,15 +125,14 @@ export default function App() {
                           <FormLabel>Last Name</FormLabel>
                           <FormControl
                             type="text"
-                            placeholder="Last Name"
+                            placeholder="Last Name" 
                             name="lastName"
                             value={formData.lastName}
                             onChange={handleChange}
-
                           />
                           {errors.lastName && (
                             <div className="text-danger">
-                              Enter Your Last Name 
+                              Enter Your Last Name
                             </div>
                           )}
                         </FormGroup>
@@ -151,7 +147,6 @@ export default function App() {
                         name="username"
                         value={formData.username}
                         onChange={handleChange}
-
                       />
                       {errors.username && (
                         <div className="text-danger">Enter Your Username </div>
@@ -167,7 +162,6 @@ export default function App() {
                         value={formData.password}
                         onChange={handleChange}
                         minLength={5}
-
                       />
                       {errors.password && (
                         <div className="text-danger">Enter Your Password </div>

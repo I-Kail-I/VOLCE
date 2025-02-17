@@ -13,9 +13,9 @@ import Logo from "../../assets/Adiddas.png";
 const CustomNavbar = ({ onLogout }) => {
   return (
     <Navbar
-      style={{ backgroundColor: "transparent" }}
+      style={{ backgroundColor: "orange" }}
       expand="lg"
-      className="shadow-sm fixed-top"
+      className="shadow-sm"
     >
       <Container className="d-flex" style={{ gap: "20px" }}>
         <Navbar.Brand href="#home" className="d-flex align-items-center">
