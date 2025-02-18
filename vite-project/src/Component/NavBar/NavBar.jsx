@@ -56,11 +56,11 @@ const CustomNavbar = ({ onLogout }) => {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto" style={{ gap: "30px", marginLeft: "20px" }}>
-            <Nav.Link onClick={() => navigate("/")} className="active">
+            <Nav.Link onClick={() => navigate("/")} className="">
               Home
             </Nav.Link>
             <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link onClick={() => navigate("/shop")}>Pricing</Nav.Link>
 
             <Dropdown as={Nav.Item}>
               <Dropdown.Toggle as={Nav.Link} className="text-dark">
@@ -86,7 +86,7 @@ const CustomNavbar = ({ onLogout }) => {
 
           <Form className="d-flex mx-3">
             <FormControl
-              type="search"
+              type="Search"
               placeholder="Search"
               aria-label="Search"
               className="me-2"

@@ -4,6 +4,7 @@ import Home from "../Home/Home";
 import SignIn from "../Sign In/SignIn";
 import SignUp from "../Sign Up/SignUp";
 import Policy from "../Policy/Policy";
+import Shop from "../Warehouse/Shop"; 
 
 export default function Auth() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -39,6 +40,9 @@ export default function Auth() {
 
           {/* Routing for the Sign In terms and condition to the Policy page */}
           <Route path="Policy" element={<Policy />} />
+
+          {/* Route for the Shop page */}
+          <Route path="/shop" element={<Shop />} />
         </Routes>
       </div>
     </>
