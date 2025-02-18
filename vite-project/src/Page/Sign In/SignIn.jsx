@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { 
-  Container, 
-  Row, 
-  Col, 
-  Form, 
-  Button, 
-  Card, 
-  FormCheck 
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  Card,
+  FormCheck,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./SignUp.Component.css";
+import "./SignIn.Component.css";
 
 const server_data = () => {
   const user = [
@@ -152,21 +152,25 @@ export default function SignIn({ onLogin }) {
                   <Col>
                     <hr />
                   </Col>
+
                   <Col xs="auto">
                     <p className="mb-0">LOGIN WITH</p>
                   </Col>
+
                   <Col>
                     <hr />
                   </Col>
                 </Row>
 
-                <Row className="justify-content-around">
+                <Row className="justify-content-around loginOption">
                   <Col xs="auto">
                     <Button variant="outline-light">GOOGLE</Button>
                   </Col>
+
                   <Col xs="auto">
                     <Button variant="outline-light">FACEBOOK</Button>
                   </Col>
+
                   <Col xs="auto">
                     <Button variant="outline-light">TWITTER</Button>
                   </Col>

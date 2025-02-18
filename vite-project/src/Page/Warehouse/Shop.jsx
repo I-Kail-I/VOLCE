@@ -3,7 +3,9 @@ import { Card, Col, Row,  } from "react-
 export default function Shop () {
   return (
     <>
-      <div></div>
+      <div className="vh-100">
+
+      </div>
     </>
   )
 }
