@@ -10,8 +10,9 @@ import {
 import Logo from "../../assets/Image//General/Adiddas.png";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import "./NavBar.css"; // Import the CSS file for animation
+import "./NavBar.css"; 
 
+// eslint-disable-next-line react/prop-types
 const CustomNavbar = ({ onLogout }) => {
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);

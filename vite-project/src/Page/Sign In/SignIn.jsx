@@ -53,6 +53,7 @@ const server_data = () => {
   return user;
 };
 
+// eslint-disable-next-line react/prop-types
 export default function SignIn({ onLogin }) {
   const [accountname, setAccountname] = useState("");
   const [password, setPassword] = useState("");
