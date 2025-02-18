@@ -7,7 +7,7 @@ import {
   Dropdown,
   Container,
 } from "react-bootstrap";
-import Logo from "../../assets/Image/Adiddas.png";
+import Logo from "../../assets/Image//General/Adiddas.png";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./NavBar.css"; // Import the CSS file for animation
